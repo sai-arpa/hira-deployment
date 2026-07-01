@@ -1,0 +1,16 @@
+[Unit]
+Description=eProcurement API Service
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/eProcurement/backend
+ExecStart=/usr/bin/dotnet /var/www/eProcurement/backend/eProcurement.Api.dll
+Restart=always
+RestartSec=10
+SyslogIdentifier=eProcurement-backend
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
